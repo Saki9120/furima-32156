@@ -50,7 +50,7 @@
 
 ### Association
 - belongs_to :user
-- has_one    :item
+- belongs_to :item
 - has_one    :adress
 
 ##  adressesテーブル
@@ -61,8 +61,10 @@
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
 | adress_line_1 | string     | null: false       |
-| adress_line_2 | string     | null: false       |
+| adress_line_2 | string     |                   |
 | tel           | string     | null: false       |
+| purchase      | references | null: false       |
+
 
 ## Active Hash
 - prefecture
