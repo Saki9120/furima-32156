@@ -1,24 +1,65 @@
-# README
+ テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| last_name  | string | null: false |
+| first_name | string | null: false |
+| last_kana  | string | null: false |
+| first_kana | string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
+| nickname   | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column       | Type       | Options           |
+| ------------ | ---------- | ----------------- |
+| name         | string     | null: false       |
+| description  | text       | null: false       |
+| price        | integer    | null: false       |
+| category     | integer    | null: false       |
+| condition    | integer    | null: false       |
+| ship_from    | integer    | null: false       |
+| days_to_ship | integer    | null: false       |
+| user         | references | foreign_key: true |
 
-* Database initialization
+## Active Hash
+- category
+- condition
+- ship_from
+- days_to_ship
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one    :purchase
 
-* Deployment instructions
+##  purchasesテーブル
 
-* ...
+| Column        | Type       | Options
+| ------------- | ---------- | ------------------|
+| card_num      | integer    | null: false       |
+| varid_thru    | integer    | null: false       |
+| security_code | integer    | null: false       |
+| prefecture    | integer    | null: false       |
+| city          | text       | null: false       |
+| adress_line_1 | text       | null: false       |
+| adress_line_2 | text       | null: false       |
+| tel           | integer    | null: false       |
+| user          | references | foreign_key: true |
+| item          | references | foreign_key: true |
+
+## Active Hash
+- prefecture
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
