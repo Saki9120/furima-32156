@@ -11,6 +11,8 @@
 | email              | string | null: false |
 | encrypted_password | string | null: false |
 | nickname           | string | null: false |
+| birthday           | string | null: false |
+
 
 ### Association
 
