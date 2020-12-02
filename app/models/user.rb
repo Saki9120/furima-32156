@@ -18,7 +18,8 @@ class User < ApplicationRecord
   end
 
   validates :email, uniqueness: { case_sensitive: false }
-        
+  validates :password, format: { with: /\A[a-z\d]\z/i }
+  
   has_many :items
   has_many :purchases
         
