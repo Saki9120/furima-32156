@@ -2,15 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| last_kana          | string | null: false |
-| first_kana         | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| nickname           | string | null: false |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| last_name          | string  | null: false |
+| first_name         | string  | null: false |
+| last_kana          | string  | null: false |
+| first_kana         | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| nickname           | string  | null: false |
+| birthday           | string  | null: false |
 
 ### Association
 
@@ -63,7 +64,7 @@
 | adress_line_1 | string     | null: false       |
 | adress_line_2 | string     |                   |
 | tel           | string     | null: false       |
-| purchase      | references | null: false       |
+| purchase      | references | foreign_key: true |
 
 
 ## Active Hash
