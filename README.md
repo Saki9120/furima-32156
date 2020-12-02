@@ -27,14 +27,16 @@
 | price           | integer    | null: false       |
 | category_id     | integer    | null: false       |
 | condition_id    | integer    | null: false       |
-| ship_from_id    | integer    | null: false       |
+| postage_id      | integer    | null: false       |
+| prefecture_id   | integer    | null: false       |
 | days_to_ship_id | integer    | null: false       |
 | user            | references | foreign_key: true |
 
 ## Active Hash
 - category
 - condition
-- ship_from
+- postage
+- prefecture
 - days_to_ship
 
 ### Association
