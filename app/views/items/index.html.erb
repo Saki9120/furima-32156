@@ -127,8 +127,8 @@
     <ul class='item-lists'>
 
     <% if @items.count > 0 %>
-      <li class='list'>
         <% @items.each do |item| %>
+      <li class='list'>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
