@@ -67,8 +67,26 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Price can't be blank")
         end
         
-        it "販売価格は半角英字で￥３００〜￥９９９９９９９の範囲で入力されていないと出品できない" do
-          @item.price = 100
+        it "販売価格は全角で入力されていると出品できない" do
+          @item.price = "１０００"
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not included in the list")
+        end
+
+        it "販売価格は半角英数混合で入力されていると出品できない" do
+          @item.price = "a1000"
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not included in the list")
+        end
+
+        it "販売価格は￥１０００００００以上で入力されていると出品できない" do
+          @item.price = 10000000
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not included in the list")
+        end
+
+        it "販売価格は￥２９９以下で入力されていると出品できない" do
+          @item.price = 299
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is not included in the list")
         end
