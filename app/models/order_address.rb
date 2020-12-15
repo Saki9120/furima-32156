@@ -1,7 +1,7 @@
 class OrderAddress
 
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address_line_1, :address_line_2, :tel
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address_line_1, :address_line_2, :tel, :token
 
     # ここにバリデーションの処理を書く
   validates :city, :address_line_1, :address_line_2, :tel, presence: true
