@@ -4,18 +4,13 @@ class OrdersController < ApplicationController
   before_action :set_item
 
   def index
-    set_item
     @order_address = OrderAddress.new
-    if @item.order.present?
-      redirect_to root_path
-    end
-    if current_user.id == @item.user_id
+    if @item.order.present? || current_user.id == @item.user_id
       redirect_to root_path
     end
   end
 
   def create
-    set_item
     @order_address = OrderAddress.new(order_params)
      if @order_address.valid?
        pay_item
