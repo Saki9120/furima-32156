@@ -64,6 +64,24 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tel is invalid")
       end
+      
+      it '電話番号は英数混合では保存できない' do
+        @order_address.tel = "aaa123456789" 
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tel is invalid")
+      end
+      
+      it "user_idが空では登録できない" do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+      
+      it "item_idが空では登録できない" do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
 
       it "tokenが空では登録できない" do
         @order_address.token = nil
